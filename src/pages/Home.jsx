@@ -47,7 +47,7 @@ const Home = () => {
                 image_url: product.image_url,
             };
 
-            const res = await axios.post("https://iron-fuel-express-1wzusc2z5-husain-haekals-projects.vercel.app/cart", payload);
+            const res = await axios.post("https://iron-fuel-express-api.vercel.app/cart", payload);
             console.log("Item added:", res.data);
             alert("Item added to cart!");
         } catch (error) {

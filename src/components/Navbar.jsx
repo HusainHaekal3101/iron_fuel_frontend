@@ -16,7 +16,7 @@ const Navbar = () => {
         const fetchCartCount = async () => {
             if (user) {
                 try {
-                    const res = await axios.get(`https://iron-fuel-express-1wzusc2z5-husain-haekals-projects.vercel.app/${user.email}`);
+                    const res = await axios.get(`https://iron-fuel-express-api.vercel.app/cart/${user.email}`);
                     const totalQty = res.data.reduce((sum, item) => sum + item.quantity, 0);
                     setCartCount(totalQty);
                 } catch (err) {

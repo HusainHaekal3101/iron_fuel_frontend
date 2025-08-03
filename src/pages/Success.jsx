@@ -11,7 +11,7 @@ const Success = () => {
     useEffect(() => {
         const clearCart = async () => {
             try {
-                await axios.delete(`https://iron-fuel-express-1wzusc2z5-husain-haekals-projects.vercel.app/cart/clear/${userEmail}`);
+                await axios.delete(`https://iron-fuel-express-api.vercel.app/cart/clear/${userEmail}`);
             } catch (err) {
                 console.error("Failed to clear cart after payment", err);
             }

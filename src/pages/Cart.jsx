@@ -9,7 +9,7 @@ const Cart = ({ userEmail }) => {
     useEffect(() => {
         const fetchCart = async () => {
             try {
-                const res = await axios.get(`https://iron-fuel-express-1wzusc2z5-husain-haekals-projects.vercel.app/cart/${userEmail}`);
+                const res = await axios.get(`https://iron-fuel-express-api.vercel.app/cart/${userEmail}`);
                 setCartItems(res.data);
             } catch (err) {
                 console.error("Failed to fetch cart items", err);
@@ -22,7 +22,7 @@ const Cart = ({ userEmail }) => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`https://iron-fuel-express-1wzusc2z5-husain-haekals-projects.vercel.app/cart/${id}`);
+            await axios.delete(`https://iron-fuel-express-api.vercel.app/cart/${id}`);
             setCartItems((prev) => prev.filter((item) => item.id !== id));
         } catch (err) {
             console.error("Failed to delete item", err);
@@ -31,7 +31,7 @@ const Cart = ({ userEmail }) => {
 
     const handleCheckout = async () => {
         try {
-            const res = await axios.post("https://iron-fuel-express-1wzusc2z5-husain-haekals-projects.vercel.app/create-checkout-session", {
+            const res = await axios.post("https://iron-fuel-express-api.vercel.app/create-checkout-session", {
                 cartItems,
             });
             window.location.href = res.data.url;
@@ -45,7 +45,7 @@ const Cart = ({ userEmail }) => {
         if (newQty < 1) return;
 
         try {
-            await axios.put(`https://iron-fuel-express-1wzusc2z5-husain-haekals-projects.vercel.app/cart/${id}`, { quantity: newQty });
+            await axios.put(`https://iron-fuel-express-api.vercel.app/cart/${id}`, { quantity: newQty });
             setCartItems((prev) =>
                 prev.map((item) =>
                     item.id === id ? { ...item, quantity: newQty } : item

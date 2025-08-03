@@ -6,7 +6,7 @@ const Checkout = ({ userEmail }) => {
 
     useEffect(() => {
         const fetchCart = async () => {
-            const res = await axios.get(`https://iron-fuel-express-1wzusc2z5-husain-haekals-projects.vercel.app/cart/${userEmail}`);
+            const res = await axios.get(`https://iron-fuel-express-api.vercel.app/cart/${userEmail}`);
             setCartItems(res.data);
         };
         fetchCart();
@@ -14,7 +14,7 @@ const Checkout = ({ userEmail }) => {
 
     const handleCheckout = async () => {
         try {
-            const res = await axios.post("https://iron-fuel-express-1wzusc2z5-husain-haekals-projects.vercel.app/create-checkout-session", {
+            const res = await axios.post("https://iron-fuel-express-api.vercel.app/create-checkout-session", {
                 items: cartItems,
             });
             window.location.href = res.data.url;
