@@ -9,15 +9,23 @@ const Success = () => {
     const [countdown, setCountdown] = useState(7);
 
     useEffect(() => {
-        const clearCart = async () => {
+        const saveHistoryAndClearCart = async () => {
             try {
+                const res = await axios.get(`https://iron-fuel-express-api.vercel.app/cart/${userEmail}`);
+                const cartItems = res.data;
+
+                await axios.post("https://iron-fuel-express-api.vercel.app/purchase-history", {
+                    user_email: userEmail,
+                    items: cartItems,
+                });
+
                 await axios.delete(`https://iron-fuel-express-api.vercel.app/cart/clear/${userEmail}`);
             } catch (err) {
-                console.error("Failed to clear cart after payment", err);
+                console.error("Failed to save history or clear cart after payment", err);
             }
         };
 
-        if (userEmail) clearCart();
+        if (userEmail) saveHistoryAndClearCart();
 
         const interval = setInterval(() => {
             setCountdown((prev) => {
@@ -30,6 +38,7 @@ const Success = () => {
 
         return () => clearInterval(interval);
     }, [navigate, userEmail]);
+
 
     return (
         <div className="text-center mt-5 text-dark"

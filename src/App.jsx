@@ -9,6 +9,8 @@ import { UserContext } from "./UserProvider.jsx";
 import Homepage from "./pages/Homepage";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import Success from "./pages/Success.jsx";
+import Profile from "./pages/Profile.jsx";
+import PurchaseHistory from "./pages/PurchaseHistory.jsx";
 
 const App = () => {
   const { userEmail, loading } = useContext(UserContext);
@@ -25,6 +27,8 @@ const App = () => {
           <Route path="/cart" element={<ProtectedRoute><Cart userEmail={userEmail} /></ProtectedRoute>} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/success" element={<Success />} />
+          <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/purchase-history" element={<ProtectedRoute><PurchaseHistory /></ProtectedRoute>} />
         </Routes>
       </div>
       <Footer />

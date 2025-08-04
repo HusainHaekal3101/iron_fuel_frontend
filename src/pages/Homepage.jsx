@@ -26,45 +26,47 @@ const HomePage = () => {
 
     return (
         <div className="homepage-container d-flex flex-column justify-content-center align-items-center text-white vh-100">
-            <h1 className="mb-2">Welcome to IronFuel</h1>
-            <p className="mb-4">Where Grit Meets Gear</p>
+            <div className="form-container text-center mb-4">
+                <h1 className="mb-2">Welcome to IronFuel</h1>
+                <p className="mb-4">Where Grit Meets Gear</p>
 
-            <div className="auth-toggle mb-3">
-                <button
-                    className={`btn ${!isSignup ? "btn-light" : "btn-outline-light"} me-2`}
-                    onClick={() => setIsSignup(false)}
-                >
-                    Log In
-                </button>
-                <button
-                    className={`btn ${isSignup ? "btn-light" : "btn-outline-light"}`}
-                    onClick={() => setIsSignup(true)}
-                >
-                    Sign Up
-                </button>
+                <div className="auth-toggle mb-3">
+                    <button
+                        className={`btn ${!isSignup ? "btn-light" : "btn-outline-light"} me-2`}
+                        onClick={() => setIsSignup(false)}
+                    >
+                        Log In
+                    </button>
+                    <button
+                        className={`btn ${isSignup ? "btn-light" : "btn-outline-light"}`}
+                        onClick={() => setIsSignup(true)}
+                    >
+                        Sign Up
+                    </button>
+                </div>
+
+                <form onSubmit={handleSubmit} style={{ width: "300px" }}>
+                    <input
+                        type="email"
+                        placeholder="Email address"
+                        className="form-control mb-3"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        className="form-control mb-3"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                    <button className="btn btn-outline-light w-100" type="submit">
+                        {isSignup ? "Create Account" : "Log In"}
+                    </button>
+                </form>
             </div>
-
-            <form onSubmit={handleSubmit} style={{ width: "300px" }}>
-                <input
-                    type="email"
-                    placeholder="Email address"
-                    className="form-control mb-3"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    className="form-control mb-3"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-                <button className="btn btn-outline-light w-100" type="submit">
-                    {isSignup ? "Create Account" : "Log In"}
-                </button>
-            </form>
         </div>
     );
 };

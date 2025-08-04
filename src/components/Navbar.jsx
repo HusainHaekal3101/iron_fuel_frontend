@@ -40,7 +40,7 @@ const Navbar = () => {
             </Link>
 
             <div className="d-flex align-items-center gap-4">
-                {user && (
+                {user !== undefined && (
                     <>
                         <Link to="/cart" className="position-relative text-white fs-5">
                             <FaShoppingBag />
@@ -63,6 +63,8 @@ const Navbar = () => {
                                 <FaUser />
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
+                                <Dropdown.Item as={Link} to="/profile">My Profile</Dropdown.Item>
+                                <Dropdown.Item as={Link} to="/purchase-history">My History</Dropdown.Item>
                                 <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
