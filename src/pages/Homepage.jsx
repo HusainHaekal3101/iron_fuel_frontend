@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import "../App.css";
+import bg from "../images/background.jpg";
 
 const HomePage = () => {
     const [isSignup, setIsSignup] = useState(false);
@@ -25,7 +26,15 @@ const HomePage = () => {
     };
 
     return (
-        <div className="homepage-container d-flex flex-column justify-content-center align-items-center text-white vh-100">
+        <div className="homepage-container d-flex flex-column justify-content-center align-items-center text-white vh-100"
+            style={{
+                backgroundImage: `url(${bg})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                height: "100vh",
+            }}
+        >
             <div className="form-container text-center mb-4">
                 <h1 className="mb-2">Welcome to IronFuel</h1>
                 <p className="mb-4">Where Grit Meets Gear</p>
